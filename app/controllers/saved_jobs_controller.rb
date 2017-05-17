@@ -10,7 +10,7 @@ class SavedJobsController < ApplicationController
   end
 
   def index
-    @saved_jobs = SavedJob.all
+    @saved_jobs = current_user.bookmark_jobs.page(params[:page]).per(10)
 
     render("saved_jobs/index.html.erb")
   end
