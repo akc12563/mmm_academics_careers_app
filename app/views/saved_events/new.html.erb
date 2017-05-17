@@ -24,7 +24,7 @@
           Event
         </label>
 
-        <input type="text" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= @saved_event.event_id %>">
+        <%= select_tag(:event_id, options_from_collection_for_select(Event.all, :id, :title, @saved_event.event_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
