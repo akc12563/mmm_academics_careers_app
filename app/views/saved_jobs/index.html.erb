@@ -16,7 +16,7 @@
 
       <% @saved_jobs.each do |saved_job| %>
       <tr>
-        <td><%= saved_job.job_id %></td>
+        <td><%= saved_job.job.company %></td>
         <td><%= saved_job.user_id %></td>
         <td>
           <a href="/saved_jobs/<%= saved_job.id %>" class="btn btn-primary">Show</a>
