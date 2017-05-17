@@ -17,7 +17,7 @@
       <% @saved_contacts.each do |saved_contact| %>
       <tr>
         <td><%= saved_contact.student.first_name %></td>
-        <td><%= saved_contact.user_id %></td>
+        <td><%= saved_contact.user.email %></td>
         <td>
           <a href="/saved_contacts/<%= saved_contact.id %>" class="btn btn-primary">Show</a>
           <a href="/saved_contacts/<%= saved_contact.id %>/edit" class="btn btn-warning">Edit</a>
