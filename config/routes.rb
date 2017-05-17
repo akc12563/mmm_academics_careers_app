@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Saved_contact resource:
+  # CREATE
+  get "/saved_contacts/new", :controller => "saved_contacts", :action => "new"
+  post "/create_saved_contact", :controller => "saved_contacts", :action => "create"
+
+  # READ
+  get "/saved_contacts", :controller => "saved_contacts", :action => "index"
+  get "/saved_contacts/:id", :controller => "saved_contacts", :action => "show"
+
+  # UPDATE
+  get "/saved_contacts/:id/edit", :controller => "saved_contacts", :action => "edit"
+  post "/update_saved_contact/:id", :controller => "saved_contacts", :action => "update"
+
+  # DELETE
+  get "/delete_saved_contact/:id", :controller => "saved_contacts", :action => "destroy"
+  #------------------------------
+
   # Routes for the Saved_event resource:
   # CREATE
   get "/saved_events/new", :controller => "saved_events", :action => "new"
