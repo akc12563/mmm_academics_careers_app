@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Saved_job resource:
+  # CREATE
+  get "/saved_jobs/new", :controller => "saved_jobs", :action => "new"
+  post "/create_saved_job", :controller => "saved_jobs", :action => "create"
+
+  # READ
+  get "/saved_jobs", :controller => "saved_jobs", :action => "index"
+  get "/saved_jobs/:id", :controller => "saved_jobs", :action => "show"
+
+  # UPDATE
+  get "/saved_jobs/:id/edit", :controller => "saved_jobs", :action => "edit"
+  post "/update_saved_job/:id", :controller => "saved_jobs", :action => "update"
+
+  # DELETE
+  get "/delete_saved_job/:id", :controller => "saved_jobs", :action => "destroy"
+  #------------------------------
+
   devise_for :users
   # Routes for the User resource:
   # READ
