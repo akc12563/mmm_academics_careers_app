@@ -1,0 +1,118 @@
+<!-- Validation failure messages -->
+<% if @job.errors.any? %>
+  <% @job.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Job #<%= @job.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_job/<%= @job.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for company -->
+      <div class="form-group">
+        <label for="company" class="control-label">
+          Company
+        </label>
+
+        <input type="text" id="company" name="company" placeholder="Company" class="form-control" value="<%= @job.company %>">
+      </div>
+
+      <!-- Label and input for position -->
+      <div class="form-group">
+        <label for="position" class="control-label">
+          Position
+        </label>
+
+        <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @job.position %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @job.location %>">
+      </div>
+
+      <!-- Label and input for job_description -->
+      <div class="form-group">
+        <label for="job_description" class="control-label">
+          Job description
+        </label>
+
+        <textarea id="job_description" name="job_description" placeholder="Job description" class="form-control" rows="3"><%= @job.job_description %></textarea>
+      </div>
+
+      <!-- Label and input for job_requirements -->
+      <div class="form-group">
+        <label for="job_requirements" class="control-label">
+          Job requirements
+        </label>
+
+        <input type="text" id="job_requirements" name="job_requirements" placeholder="Job requirements" class="form-control" value="<%= @job.job_requirements %>">
+      </div>
+
+      <!-- Label and input for job_link -->
+      <div class="form-group">
+        <label for="job_link" class="control-label">
+          Job link
+        </label>
+
+        <input type="text" id="job_link" name="job_link" placeholder="Job link" class="form-control" value="<%= @job.job_link %>">
+      </div>
+
+      <!-- Label and input for contact_name -->
+      <div class="form-group">
+        <label for="contact_name" class="control-label">
+          Contact name
+        </label>
+
+        <input type="text" id="contact_name" name="contact_name" placeholder="Contact name" class="form-control" value="<%= @job.contact_name %>">
+      </div>
+
+      <!-- Label and input for contact_email -->
+      <div class="form-group">
+        <label for="contact_email" class="control-label">
+          Contact email
+        </label>
+
+        <input type="text" id="contact_email" name="contact_email" placeholder="Contact email" class="form-control" value="<%= @job.contact_email %>">
+      </div>
+
+      <!-- Label and input for contact_phone -->
+      <div class="form-group">
+        <label for="contact_phone" class="control-label">
+          Contact phone
+        </label>
+
+        <input type="text" id="contact_phone" name="contact_phone" placeholder="Contact phone" class="form-control" value="<%= @job.contact_phone %>">
+      </div>
+
+      <!-- Label and input for deadline -->
+      <div class="form-group">
+        <label for="deadline" class="control-label">
+          Deadline
+        </label>
+
+        <input type="text" id="deadline" name="deadline" placeholder="Deadline" class="form-control" value="<%= @job.deadline %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Job
+      </button>
+      or
+      <a href="/jobs/<%= @job.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
