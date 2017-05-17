@@ -10,7 +10,8 @@ class SavedJobsController < ApplicationController
   end
 
   def index
-    @saved_jobs = current_user.bookmark_jobs.page(params[:page]).per(10)
+    @q = current_user.bookmark_jobs.ransack(params[:q])
+      @saved_jobs = @q.result(:distinct => true).includes(:job, :user).page(params[:page]).per(10)
 
     render("saved_jobs/index.html.erb")
   end

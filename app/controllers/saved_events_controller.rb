@@ -10,7 +10,8 @@ class SavedEventsController < ApplicationController
   end
 
   def index
-    @saved_events = current_user.saved_events.page(params[:page]).per(10)
+    @q = current_user.saved_events.ransack(params[:q])
+      @saved_events = @q.result(:distinct => true).includes(:event, :user).page(params[:page]).per(10)
 
     render("saved_events/index.html.erb")
   end

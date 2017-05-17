@@ -3,6 +3,123 @@
     Students
     <a href="/students/new" class="btn btn-lg btn-success">New Student</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => collapse_search_form, :id => "students_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+    <%= f.label :first_name_cont, "First name contains" %>
+    <%= f.text_field :first_name_cont, :class => "form-control", :placeholder => "First name contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :email_cont, "Email contains" %>
+    <%= f.text_field :email_cont, :class => "form-control", :placeholder => "Email contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :current_status_cont, "Current status contains" %>
+    <%= f.text_field :current_status_cont, :class => "form-control", :placeholder => "Current status contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :full_time_location_cont, "Full time location contains" %>
+    <%= f.text_field :full_time_location_cont, :class => "form-control", :placeholder => "Full time location contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :full_time_position_cont, "Full time position contains" %>
+    <%= f.text_field :full_time_position_cont, :class => "form-control", :placeholder => "Full time position contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :full_time_company_cont, "Full time company contains" %>
+    <%= f.text_field :full_time_company_cont, :class => "form-control", :placeholder => "Full time company contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :internship_position_cont, "Internship position contains" %>
+    <%= f.text_field :internship_position_cont, :class => "form-control", :placeholder => "Internship position contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :internship_location_cont, "Internship location contains" %>
+    <%= f.text_field :internship_location_cont, :class => "form-control", :placeholder => "Internship location contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :internship_company_cont, "Internship company contains" %>
+    <%= f.text_field :internship_company_cont, :class => "form-control", :placeholder => "Internship company contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :grad_year, "Grad year" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :grad_year_gteq, :class => "form-control", :placeholder => "Grad year greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :grad_year_lteq, :class => "form-control", :placeholder => "Grad year less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :last_name_cont, "Last name contains" %>
+    <%= f.text_field :last_name_cont, :class => "form-control", :placeholder => "Last name contains" %>
+  </div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/students" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#students_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">
