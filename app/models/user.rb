@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :saved_events,
+             :dependent => :destroy
+
   has_many   :bookmark_jobs,
              :class_name => "SavedJob",
              :dependent => :destroy
