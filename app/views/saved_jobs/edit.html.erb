@@ -24,7 +24,7 @@
           Job
         </label>
 
-        <input type="text" id="job_id" name="job_id" placeholder="Job" class="form-control" value="<%= @saved_job.job_id %>">
+        <%= select_tag(:job_id, options_from_collection_for_select(Job.all, :id, :company, @saved_job.job_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
