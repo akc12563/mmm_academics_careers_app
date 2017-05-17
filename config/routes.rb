@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Saved_event resource:
+  # CREATE
+  get "/saved_events/new", :controller => "saved_events", :action => "new"
+  post "/create_saved_event", :controller => "saved_events", :action => "create"
+
+  # READ
+  get "/saved_events", :controller => "saved_events", :action => "index"
+  get "/saved_events/:id", :controller => "saved_events", :action => "show"
+
+  # UPDATE
+  get "/saved_events/:id/edit", :controller => "saved_events", :action => "edit"
+  post "/update_saved_event/:id", :controller => "saved_events", :action => "update"
+
+  # DELETE
+  get "/delete_saved_event/:id", :controller => "saved_events", :action => "destroy"
+  #------------------------------
+
   # Routes for the Saved_job resource:
   # CREATE
   get "/saved_jobs/new", :controller => "saved_jobs", :action => "new"
