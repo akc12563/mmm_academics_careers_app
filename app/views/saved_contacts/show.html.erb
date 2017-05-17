@@ -17,12 +17,14 @@
       <a href="/saved_contacts" class="btn btn-primary">
         Back
       </a>
-      <a href="/saved_contacts/<%= @saved_contact.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_saved_contact/<%= @saved_contact.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @saved_contact.user %>
+        <a href="/saved_contacts/<%= @saved_contact.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_saved_contact/<%= @saved_contact.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
