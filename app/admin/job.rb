@@ -1,5 +1,7 @@
 ActiveAdmin.register Job do
 
+ permit_params :company, :position, :location, :job_description, :job_requirements, :job_link, :contact_name, :contact_email, :contact_phone, :deadline
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
