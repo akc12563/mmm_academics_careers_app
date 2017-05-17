@@ -1,4 +1,14 @@
 class SavedEventsController < ApplicationController
+  before_action :current_user_must_be_saved_event_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_saved_event_user
+    saved_event = SavedEvent.find(params[:id])
+
+    unless current_user == saved_event.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @saved_events = SavedEvent.all
 

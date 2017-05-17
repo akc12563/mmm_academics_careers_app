@@ -17,12 +17,14 @@
       <a href="/saved_events" class="btn btn-primary">
         Back
       </a>
-      <a href="/saved_events/<%= @saved_event.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_saved_event/<%= @saved_event.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @saved_event.user %>
+        <a href="/saved_events/<%= @saved_event.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_saved_event/<%= @saved_event.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
