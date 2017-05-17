@@ -27,14 +27,8 @@
         <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :first_name, @saved_contact.student_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @saved_contact.user_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Saved Contact
