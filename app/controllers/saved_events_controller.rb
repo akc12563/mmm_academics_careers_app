@@ -10,7 +10,7 @@ class SavedEventsController < ApplicationController
   end
 
   def index
-    @saved_events = SavedEvent.all
+    @saved_events = current_user.saved_events.page(params[:page]).per(10)
 
     render("saved_events/index.html.erb")
   end
