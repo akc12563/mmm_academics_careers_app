@@ -24,7 +24,7 @@
           Student
         </label>
 
-        <input type="text" id="student_id" name="student_id" placeholder="Student" class="form-control" value="<%= @saved_contact.student_id %>">
+        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :first_name, @saved_contact.student_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
