@@ -1,0 +1,1 @@
+{"name":"MMM Academics \u0026 Careers App","repository":"https://github.com/akc12563/mmm_academics_careers_app","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
