@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @saved_job = SavedJob.new
     @job = Job.find(params[:id])
 
     render("jobs/show.html.erb")

@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @saved_contact = SavedContact.new
     @student = Student.find(params[:id])
 
     render("students/show.html.erb")
