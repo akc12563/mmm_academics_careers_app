@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h3>Student #<%= @student.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>First name</dt>
+      <dd><%= @student.first_name %></dd>
+
+      <dt>Last name</dt>
+      <dd><%= @student.last_name %></dd>
+
+      <dt>Grad year</dt>
+      <dd><%= @student.grad_year %></dd>
+
+      <dt>Internship company</dt>
+      <dd><%= @student.internship_company %></dd>
+
+      <dt>Internship location</dt>
+      <dd><%= @student.internship_location %></dd>
+
+      <dt>Internship position</dt>
+      <dd><%= @student.internship_position %></dd>
+
+      <dt>Full time company</dt>
+      <dd><%= @student.full_time_company %></dd>
+
+      <dt>Full time position</dt>
+      <dd><%= @student.full_time_position %></dd>
+
+      <dt>Full time location</dt>
+      <dd><%= @student.full_time_location %></dd>
+
+      <dt>Current status</dt>
+      <dd><%= @student.current_status %></dd>
+
+      <dt>Email</dt>
+      <dd><%= @student.email %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/students" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/students/<%= @student.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_student/<%= @student.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
