@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "students#index"
   # Routes for the Saved_contact resource:
   # CREATE
   get "/saved_contacts/new", :controller => "saved_contacts", :action => "new"
