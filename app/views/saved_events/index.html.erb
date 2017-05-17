@@ -16,8 +16,20 @@
 
       <% @saved_events.each do |saved_event| %>
       <tr>
-        <td><%= saved_event.event.title %></td>
-        <td><%= saved_event.user.email %></td>
+        <td>
+          <% if saved_event.event.present? %>
+            <a href="/events/<%= saved_event.event.id %>">
+              <%= saved_event.event.title %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if saved_event.user.present? %>
+            <a href="/users/<%= saved_event.user.id %>">
+              <%= saved_event.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/saved_events/<%= saved_event.id %>" class="btn btn-primary">Show</a>
           

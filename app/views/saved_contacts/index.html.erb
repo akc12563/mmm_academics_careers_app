@@ -16,8 +16,20 @@
 
       <% @saved_contacts.each do |saved_contact| %>
       <tr>
-        <td><%= saved_contact.student.first_name %></td>
-        <td><%= saved_contact.user.email %></td>
+        <td>
+          <% if saved_contact.student.present? %>
+            <a href="/students/<%= saved_contact.student.id %>">
+              <%= saved_contact.student.first_name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if saved_contact.user.present? %>
+            <a href="/users/<%= saved_contact.user.id %>">
+              <%= saved_contact.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/saved_contacts/<%= saved_contact.id %>" class="btn btn-primary">Show</a>
           
