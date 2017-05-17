@@ -32,3 +32,96 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many bookmark_jobs -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bookmark Jobs
+      </li>
+
+      <% @user.bookmark_jobs.each do |saved_job| %>
+        <li class="list-group-item">
+          <a href="/saved_jobs/<%= saved_job.id %>">
+            <%= saved_job.job_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_jobs/<%= saved_job.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_jobs/<%= saved_job.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_job/<%= saved_job.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many saved_events -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Saved Events
+      </li>
+
+      <% @user.saved_events.each do |saved_event| %>
+        <li class="list-group-item">
+          <a href="/saved_events/<%= saved_event.id %>">
+            <%= saved_event.event_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_events/<%= saved_event.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_events/<%= saved_event.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_event/<%= saved_event.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many saved_contacts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Saved Contacts
+      </li>
+
+      <% @user.saved_contacts.each do |saved_contact| %>
+        <li class="list-group-item">
+          <a href="/saved_contacts/<%= saved_contact.id %>">
+            <%= saved_contact.student_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_contacts/<%= saved_contact.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_contacts/<%= saved_contact.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_contact/<%= saved_contact.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

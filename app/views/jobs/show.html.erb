@@ -50,3 +50,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Job has many bookmark_jobs -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bookmark Jobs
+      </li>
+
+      <% @job.bookmark_jobs.each do |saved_job| %>
+        <li class="list-group-item">
+          <a href="/saved_jobs/<%= saved_job.id %>">
+            <%= saved_job.job_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_jobs/<%= saved_job.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_jobs/<%= saved_job.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_job/<%= saved_job.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
