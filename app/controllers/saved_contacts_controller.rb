@@ -10,7 +10,7 @@ class SavedContactsController < ApplicationController
   end
 
   def index
-    @saved_contacts = SavedContact.all
+    @saved_contacts = current_user.saved_contacts.page(params[:page]).per(10)
 
     render("saved_contacts/index.html.erb")
   end
