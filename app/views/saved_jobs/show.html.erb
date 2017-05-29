@@ -5,23 +5,39 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Job</dt>
-      <dd>
-        <% if @saved_job.job.present? %>
-          <a href="/jobs/<%= @saved_job.job_id %>">
-            <%= @saved_job.job.company %>
-          </a>
-        <% end %>
-      </dd>
+      <dt>Company</dt>
+      <dd><%= @saved_job.job.company %></dd>
 
-      <dt>User</dt>
-      <dd>
-        <% if @saved_job.user.present? %>
-          <a href="/users/<%= @saved_job.user_id %>">
-            <%= @saved_job.user.email %>
-          </a>
-        <% end %>
-      </dd>
+      <dt>Position</dt>
+      <dd><%= @saved_job.job.position %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @saved_job.job.location %></dd>
+
+      <dt>Job description</dt>
+      <dd><%= @saved_job.job.job_description %></dd>
+
+      <dt>Job requirements</dt>
+      <dd><%= @saved_job.job.job_requirements %></dd>
+
+      <dt>Job link</dt>
+      <dd><%= @saved_job.job.job_link %></dd>
+
+      <dt>Contact name</dt>
+      <dd><%= @saved_job.job.contact_name %></dd>
+
+      <dt>Contact email</dt>
+      <dd><%= @saved_job.job.contact_email %></dd>
+
+      <dt>Contact phone</dt>
+      <dd><%= @saved_job.job.contact_phone %></dd>
+
+      <dt>Deadline</dt>
+      <dd><%= @saved_job.job.deadline %></dd>
+
+    </dl>
+
+  </dd>
 
     </dl>
 

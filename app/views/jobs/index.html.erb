@@ -54,31 +54,6 @@
       </script>
 
 <div class="form-group">
-    <%= f.label :contact_phone_cont, "Contact phone contains" %>
-    <%= f.text_field :contact_phone_cont, :class => "form-control", :placeholder => "Contact phone contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :contact_email_cont, "Contact email contains" %>
-    <%= f.text_field :contact_email_cont, :class => "form-control", :placeholder => "Contact email contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :contact_name_cont, "Contact name contains" %>
-    <%= f.text_field :contact_name_cont, :class => "form-control", :placeholder => "Contact name contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :job_link_cont, "Job link contains" %>
-    <%= f.text_field :job_link_cont, :class => "form-control", :placeholder => "Job link contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :job_requirements_cont, "Job requirements contains" %>
-    <%= f.text_field :job_requirements_cont, :class => "form-control", :placeholder => "Job requirements contains" %>
-  </div>
-
-<div class="form-group">
     <%= f.label :job_description_cont, "Job description contains" %>
     <%= f.text_field :job_description_cont, :class => "form-control", :placeholder => "Job description contains" %>
   </div>
@@ -133,7 +108,7 @@
           });
       </script>
 
-        
+
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -153,11 +128,6 @@
         <th>Position</th>
         <th>Location</th>
         <th>Job description</th>
-        <th>Job requirements</th>
-        <th>Job link</th>
-        <th>Contact name</th>
-        <th>Contact email</th>
-        <th>Contact phone</th>
         <th>Deadline</th>
         <th>Actions</th>
       </tr>
@@ -168,15 +138,12 @@
         <td><%= job.position %></td>
         <td><%= job.location %></td>
         <td><%= job.job_description %></td>
-        <td><%= job.job_requirements %></td>
-        <td><%= job.job_link %></td>
-        <td><%= job.contact_name %></td>
-        <td><%= job.contact_email %></td>
-        <td><%= job.contact_phone %></td>
         <td><%= job.deadline %></td>
         <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
+          <div class="row"> <div class="col-md-12"></div> </div>
           <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>
+          <div class="row"> <div class="col-md-12"></div> </div>
           <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
