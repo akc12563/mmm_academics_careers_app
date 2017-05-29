@@ -9,11 +9,51 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
     /* Only necessary if you are using navbar-fixed-top */
     body {
       padding-top: 60px;
     }
-  </style>
+
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -49,23 +89,27 @@
           <li><a href="/offers">All Offers</a></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user.present? %>
-            <li>
-              <a href="/users/edit">
-                My Profile
-              </a>
-            </li>
-            <li><a href="/saved_contacts">My Contacts</a></li>
-            <li><a href="/saved_events">My Events</a></li>
-            <li><a href="/saved_jobs">My Jobs</a></li>
+        <% if current_user.present? %>
+        <div class="dropdown">
+          <button class="dropbtn">My Things</button>
+          <div class="dropdown-content">
+            <a href="/users/<%=current_user.id%>">My Profile</a>
+            <a href="/saved_contacts">My Contacts</a>
+            <a href="/saved_events">My Events</a>
+            <a href="/saved_jobs">My Jobs</a>
+            <a href="/users/edit">Edit Profile</a>
+          </div>
+        </div>
 
+
+        <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="/users/sign_out" data-method="delete" rel="nofollow">
-                Sign Out
+                Sign Out <%=current_user.first_name%> <%= current_user.last_name%>
               </a>
             </li>
           <% else %>
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="/users/sign_up">
                 Sign Up
@@ -77,8 +121,9 @@
                 Sign In
               </a>
             </li>
-          <% end %>
-        </ul>
+
+        </ul></ul>
+        <%end%>
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>

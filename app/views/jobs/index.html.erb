@@ -129,6 +129,7 @@
         <th>Location</th>
         <th>Job description</th>
         <th>Deadline</th>
+        <th>Save Job</th>
         <th>Actions</th>
       </tr>
 
@@ -140,12 +141,46 @@
         <td><%= job.job_description %></td>
         <td><%= job.deadline %></td>
         <td>
+          <% like = SavedJob.where(:user_id=> current_user.id, :job_id=> job.id).first %>
+                  <% if like.present?%>
+
+                  <!-- if yes, display a closed heart and allow user to delete like -->
+
+                  <a href= "/delete_saved_job/<%= like.id %>" class="btn btn-link">
+                    <i class="fa fa-heart"></i></a>
+
+                    <!-- if not, display open heart and allow user to add like -->
+
+                    <%else%>
+                    <form action="/create_saved_job" method="post">
+                      <!-- Hidden input for authenticity token to protect from forgery -->
+                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                      <!-- Label and input for user_id -->
+                      <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+                      <!-- Label and input for job_id -->
+                      <input type="hidden" id="job_id" name="job_id" value="<%= job.id %>">
+
+
+                      <button class="btn btn-link">
+                        <i class="fa fa-heart-o"></i>
+                      </button>
+                    </form>
+
+                    <%end%>
+         </td>
+
+        <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
           <div class="row"> <div class="col-md-12"></div> </div>
+
           <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>
           <div class="row"> <div class="col-md-12"></div> </div>
           <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
         </td>
+
       </tr>
       <% end %>
     </table>

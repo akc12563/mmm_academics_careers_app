@@ -37,29 +37,33 @@
 </div>
 
 <!-- A Event has many saved_events -->
+<!--Who has saved this event -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Saved Events
+        People who Saved this Event
       </li>
 
       <% @event.saved_events.each do |saved_event| %>
         <li class="list-group-item">
-          <a href="/saved_events/<%= saved_event.id %>">
-            <%= saved_event.event_id %>
+          <a href="/saved_events/<%= saved_event.user.id %>">
+            <%= saved_event.user.first_name %> <%= saved_event.user.last_name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/saved_events/<%= saved_event.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
+            <%if current_user.id==saved_event.user_id %>
             <a href="/saved_events/<%= saved_event.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_saved_event/<%= saved_event.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
+            <%else%>
+            <%end%>
           </div>
         </li>
       <% end %>

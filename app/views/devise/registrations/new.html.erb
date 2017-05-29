@@ -39,7 +39,7 @@
             <div class="col-sm-10">
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
               <p class="help-block">
-                Leave blank if you don't want to change it.
+                
               </p>
             </div>
           </div>
@@ -110,20 +110,20 @@
           <div clss="form-group">
           <%= f.label "Can we invite you to alumni or careers events?", class: "col-sm-10 control-label" %>
           <div>
-          <%= radio_button_tag(:ok_to_invite, "1") %>
-          <%= label_tag(:ok_to_invite, "Yes") %>
-          <%= radio_button_tag(:ok_to_invite, "0") %>
-          <%= label_tag(:ok_to_invite, "No") %>
+          <%= f.radio_button_tag(:ok_to_invite, "1") %>
+          <%= f.label_tag(:ok_to_invite, "Yes") %>
+          <%= f.radio_button_tag(:ok_to_invite, "0") %>
+          <%= f.label_tag(:ok_to_invite, "No") %>
         </div>
       </div>
 
       <div clss="form-group">
       <%= f.label "Can students contact you?", class: "col-sm-10 control-label" %>
       <div>
-      <%= radio_button_tag(:ok_to_contact, "1") %>
-      <%= label_tag(:ok_to_contact, "Yes") %>
-      <%= radio_button_tag(:ok_to_contact, "0") %>
-      <%= label_tag(:ok_to_contact, "No") %>
+      <%= f.radio_button_tag(:ok_to_contact, "1") %>
+      <%= f.label_tag(:ok_to_contact, "Yes") %>
+      <%= f.radio_button_tag(:ok_to_contact, "0") %>
+      <%= f.label_tag(:ok_to_contact, "No") %>
     </div>
   </div>
 <p></p>
