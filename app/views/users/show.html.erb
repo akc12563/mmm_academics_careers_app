@@ -1,29 +1,188 @@
-<div class="page-header">
-  <h3>User #<%= @user.id %></h3>
+<div class="page-header" margin="auto">
+  <h3><%=@user.first_name%> <%=@user.last_name%> <small>Class of <%= @user.grad_year %></small></h3>
+  <!-- adding code for save/unsave contact -->
+  <% like = SavedContact.where(:self_id=> current_user.id, :contact_id=> @user.id).first %>
+          <% if like.present?%>
+
+          <!-- if yes, display a closed heart and allow user to delete like -->
+
+          <a href= "/delete_saved_contact/<%= like.id %>" class="btn btn-link">
+            Contact Saved <i class="fa fa-heart"></i></a>
+
+            <!-- if not, display open heart and allow user to add like -->
+
+            <%else%>
+            <form action="/create_saved_contact" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <!-- Label and input for self_id -->
+              <input type="hidden" id="self_id" name="self_id" value="<%= current_user.id %>">
+
+              <!-- Label and input for contact_id -->
+              <input type="hidden" id="contact_id" name="contact_id" value="<%= @user.id %>">
+
+
+              <button class="btn btn-link">
+                Save Contact <i class="fa fa-heart-o"></i>
+              </button>
+            </form>
+
+            <%end%>
 </div>
 
+
+<!--user info here from sign up -->
+
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
+<div class="col-md-12 mb-2">
+  <dl class="dl-horizontal">
+      <dt>Photo</dt>
+      <dd><img src= "<%=@user.photo%>" width = "200"></dd>
+
       <dt>Email</dt>
       <dd><%= @user.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @user.password %></dd>
-
-      <dt>First name</dt>
-      <dd><%= @user.first_name %></dd>
-
-      <dt>Last name</dt>
-      <dd><%= @user.last_name %></dd>
-
-      <dt>Grad year</dt>
-      <dd><%= @user.grad_year %></dd>
 
       <dt>Industry focus</dt>
       <dd><%= @user.industry_focus %></dd>
 
     </dl>
+    <!--Prior Employment -->
+        <h3> Prior Employment </h3>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                  <tr>
+                    <th>Industry</th>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Location</th>
+                  </tr>
+                  <tr>
+                    <td><%=@user.prior_industry%></td>
+                    <td><%= @user.prior_company %></td>
+                    <td><%= @user.prior_position %></td>
+                    <td><%= @user.prior_location %></td>
+                </table>
+              </div>
+            </div>
+
+
+<!--Internship -->
+    <h3> Internship </h3>
+    <% if @internship.present?%>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+
+
+              <tr>
+
+                <td><%= @internship.company %></td>
+                <td><%= @internship.position %></td>
+
+                <td><%= @internship.location %></td>
+
+                <% if @internship.status == "1" %>
+                <td>Accepted</td>
+                <% elsif @internship.status == "2" %>
+                <td>Pending</td>
+                <% else %>
+                <td>Declined </td>
+                <%end%>
+              </tr>
+              <%else%>
+                No Internship Reported
+              <%end%>
+            </table>
+          </div>
+        </div>
+
+        <!--Fulltime -->
+            <h3> Fulltime Role </h3>
+            <% if @fulltime.present?%>
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped table-hover">
+                      <tr>
+                        <th>Company</th>
+                        <th>Position</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                      </tr>
+
+
+                      <tr>
+
+                        <td><%= @fulltime.company %></td>
+                        <td><%= @fulltime.position %></td>
+
+                        <td><%= @fulltime.location %></td>
+
+                        <% if @fulltime.status == "1" %>
+                        <td>Accepted</td>
+                        <% elsif @fulltime.status == "2" %>
+                        <td>Pending</td>
+                        <% else %>
+                        <td>Declined </td>
+                        <%end%>
+                      </tr>
+                      <%else%>
+                        No Fulltime Position Reported
+                      <%end%>
+                    </table>
+                  </div>
+                </div>
+
+
+    <!-- info here on any offers they received -->
+
+
+<h3> Offers Received </h3>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>Company</th>
+            <th>Position</th>
+            <th>Internship or Fulltime</th>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+
+          <% @offers.each do |offer| %>
+          <tr>
+
+            <td><%= offer.company %></td>
+            <td><%= offer.position %></td>
+
+            <% if offer.intern_fulltime == true %>
+            <td>Internship</td>
+            <% else %>
+            <td>Fulltime</td>
+            <% end %>
+
+            <td><%= offer.location %></td>
+
+            <% if offer.status == "1" %>
+            <td>Accepted</td>
+            <% elsif offer.status == "2" %>
+            <td>Pending</td>
+            <% else %>
+            <td>Declined </td>
+            <%end%>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/users" class="btn btn-primary">
@@ -34,12 +193,12 @@
 </div>
 
 <!-- A User has many bookmark_jobs -->
-
+<% if @user.id==current_user.id %>
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Bookmark Jobs
+        Bookmarked Jobs
       </li>
 
       <% @user.bookmark_jobs.each do |saved_job| %>
@@ -98,3 +257,5 @@
     </ul>
   </div>
 </div>
+<%else%>
+<%end%>

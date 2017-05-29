@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MmmAcademicsCareersApp</title>
+  <title>MMM Jobs</title>
 
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -35,20 +35,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">MmmAcademicsCareersApp</a>
+        <a href="/" class="navbar-brand">MMM Jobs</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/saved_contacts">Saved Contacts</a></li>
-          <!--<li><a href="/saved_events">Saved Events</a></li>-->
-          <!-- <li><a href="/saved_jobs">Saved Jobs</a></li>-->
           <li><a href="/users">Users</a></li>
-          <!--<li><a href="/events">Events</a></li>-->
-          <!--<li><a href="/jobs">Jobs</a></li>-->
-          <li><a href="/internship_accepts">Current Internships</a></li>
-          <li><a href="/fulltime_accepts">Fulltime Positions</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a href="/jobs">Job Board</a></li>
+          <li><a href="/internship_accepts">Internships</a></li>
+          <li><a href="/fulltime_accepts">FT Positions </a></li>
           <li><a href="/offers">All Offers</a></li>
         </ul>
 
@@ -56,9 +53,12 @@
           <% if current_user.present? %>
             <li>
               <a href="/users/edit">
-                <%= current_user.email %>
+                My Profile
               </a>
             </li>
+            <li><a href="/saved_contacts">My Contacts</a></li>
+            <li><a href="/saved_events">My Events</a></li>
+            <li><a href="/saved_jobs">My Jobs</a></li>
 
             <li>
               <a href="/users/sign_out" data-method="delete" rel="nofollow">
