@@ -14,6 +14,7 @@
         <th>Position</th>
         <th>Location</th>
         <th>Status</th>
+        <th>Save Contact</th>
         <th>Actions</th>
       </tr>
 
@@ -33,6 +34,36 @@
         <td>Declined </td>
         <%end%>
 
+        <td>
+          <% like = SavedContact.where(:self_id=> current_user.id, :contact_id=> offer.user.id).first %>
+                  <% if like.present?%>
+
+                  <!-- if yes, display a closed heart and allow user to delete like -->
+
+                  <a href= "/delete_saved_contact/<%= like.id %>" class="btn btn-link">
+                    <i class="fa fa-heart"></i></a>
+
+                    <!-- if not, display open heart and allow user to add like -->
+
+                    <%else%>
+                    <form action="/create_saved_contact" method="post">
+                      <!-- Hidden input for authenticity token to protect from forgery -->
+                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                      <!-- Label and input for self_id -->
+                      <input type="hidden" id="self_id" name="self_id" value="<%= current_user.id %>">
+
+                      <!-- Label and input for contact_id -->
+                      <input type="hidden" id="contact_id" name="contact_id" value="<%= offer.user.id %>">
+
+
+                      <button class="btn btn-link">
+                        <i class="fa fa-heart-o"></i>
+                      </button>
+                    </form>
+
+                    <%end%>
+         </td>
 
 
         <td>

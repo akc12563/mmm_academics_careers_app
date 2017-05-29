@@ -4,14 +4,13 @@ class SavedContactsController < ApplicationController
   def current_user_must_be_saved_contact_user
     saved_contact = SavedContact.find(params[:id])
 
-    unless current_user == saved_contact.user
+    unless current_user == saved_contact.self_user
       redirect_to :back, :alert => "You are not authorized for that."
     end
   end
 
   def index
-    @q = current_user.saved_contacts.ransack(params[:q])
-      @saved_contacts = @q.result(:distinct => true).includes(:student, :user).page(params[:page]).per(10)
+    @saved_contacts = SavedContact.where({:self_id=>current_user.id})
 
     render("saved_contacts/index.html.erb")
   end
@@ -31,8 +30,8 @@ class SavedContactsController < ApplicationController
   def create
     @saved_contact = SavedContact.new
 
-    @saved_contact.student_id = params[:student_id]
-    @saved_contact.user_id = params[:user_id]
+    @saved_contact.contact_id = params[:contact_id]
+    @saved_contact.self_id = params[:self_id]
 
     save_status = @saved_contact.save
 
@@ -59,8 +58,9 @@ class SavedContactsController < ApplicationController
   def update
     @saved_contact = SavedContact.find(params[:id])
 
-    @saved_contact.student_id = params[:student_id]
-    @saved_contact.user_id = params[:user_id]
+    @saved_contact.contact_id = params[:contact_id]
+    @saved_contact.self_id = params[:self_id]
+    @saved_contact.comments = params[:comments]
 
     save_status = @saved_contact.save
 
@@ -69,7 +69,7 @@ class SavedContactsController < ApplicationController
 
       case referer
       when "/saved_contacts/#{@saved_contact.id}/edit", "/update_saved_contact"
-        redirect_to("/saved_contacts/#{@saved_contact.id}", :notice => "Saved contact updated successfully.")
+        redirect_to("/saved_contacts", :notice => "Saved contact updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Saved contact updated successfully.")
       end

@@ -18,17 +18,17 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for student_id -->
+      <!-- Label and input for other_user_id -->
       <div class="form-group">
         <label for="student_id" class="control-label">
-          Student
+          Other User
         </label>
 
-        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :first_name, @saved_contact.student_id), :class => "form-control") %>
+        <%= select_tag(:contact_id, options_from_collection_for_select(User.all, :id, :first_name, @saved_contact.contact_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+      <!-- Label and input for self_id -->
+      <input type="hidden" name="self_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Saved Contact
