@@ -220,16 +220,16 @@
       </li>
       <% @user.contacts.each do |saved_contact| %>
       <li class="list-group-item">
-        <a href="/saved_contacts/<%= saved_contact.id %>">
+        <a href="/users/<%= saved_contact.id %>">
           <%= saved_contact.first_name %> <%=saved_contact.last_name%>
         </a>
         <div class="btn-group btn-group-xs pull-right">
-          <a href="/jobs/<%= saved_contact.id %>" class="btn btn-primary">
+          <a href="/users/<%= saved_contact.id %>" class="btn btn-primary">
             Show Contact Details
           </a>
 
           </a>
-          <a href="/delete_saved_job/<%= saved_contact.id %>" class="btn btn-danger" rel="nofollow">
+          <a href="/delete_saved_contact/<%= saved_contact.id %>" class="btn btn-danger" rel="nofollow">
             Delete Saved Contact
           </a>
 

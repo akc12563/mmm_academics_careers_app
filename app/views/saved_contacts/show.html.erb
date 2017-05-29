@@ -5,11 +5,11 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Student</dt>
+      <dt>Contact</dt>
       <dd>
-        <% if @saved_contact.student.present? %>
-          <a href="/students/<%= @saved_contact.student_id %>">
-            <%= @saved_contact.student.first_name %>
+        <% if @saved_contact.contact.present? %>
+          <a href="/students/<%= @saved_contact.contact_id %>">
+            <%= @saved_contact.contact.first_name %>
           </a>
         <% end %>
       </dd>
@@ -17,7 +17,7 @@
       <dt>User</dt>
       <dd>
         <% if @saved_contact.user.present? %>
-          <a href="/users/<%= @saved_contact.user_id %>">
+          <a href="/users/<%= @saved_contact.self_id %>">
             <%= @saved_contact.user.email %>
           </a>
         <% end %>
