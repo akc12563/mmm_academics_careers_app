@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h1>
+    Summer Internships
+    <a href="/offers/new" class="btn btn-lg btn-success">New Offer</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Company</th>
+        <th>Position</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.user.first_name%> <%= offer.user.last_name %></td>
+        <td><%= offer.company %></td>
+        <td><%= offer.position %></td>
+
+        <td><%= offer.location %></td>
+
+        <% if offer.status == "1" %>
+        <td>Accepted</td>
+        <% elsif offer.status == "2" %>
+        <td>Pending</td>
+        <% else %>
+        <td>Declined </td>
+        <%end%>
+
+
+
+        <td>
+          <a href="/offers/<%= offer.id %>" class="btn btn-primary">Show</a>
+          <a href="/offers/<%= offer.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_offer/<%= offer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<!-- Validation failure messages -->
+<% if @offer.errors.any? %>
+  <% @offer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Offer #<%= @offer.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_offer/<%= @offer.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for company -->
+      <div class="form-group">
+        <label for="company" class="control-label">
+          Company
+        </label>
+
+        <input type="text" id="company" name="company" placeholder="Company" class="form-control" value="<%= @offer.company %>">
+      </div>
+
+      <!-- Label and input for position -->
+      <div class="form-group">
+        <label for="position" class="control-label">
+          Position
+        </label>
+
+        <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @offer.position %>">
+      </div>
+
+      <!-- Label and input for intern_fulltime -->
+      <div class="checkbox">
+        <label for="intern_fulltime">
+          <input type="checkbox" id="intern_fulltime" name="intern_fulltime" value="1" <%= "checked" if @offer.intern_fulltime %>>
+          Intern fulltime
+        </label>
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @offer.location %>">
+      </div>
+
+      <!-- Label and input for status -->
+      <div class="form-group">
+        <label for="status" class="control-label">
+          Status
+        </label>
+
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @offer.status %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @offer.user_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Offer
+      </button>
+      or
+      <a href="/offers/<%= @offer.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

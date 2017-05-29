@@ -45,16 +45,6 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :current_password, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-              <p class="help-block">
-                We need your current password to confirm your changes.
-              </p>
-            </div>
-          </div>
-
-          <div class="form-group">
             <%= f.label :first_name, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
               <%= f.text_field :first_name, :class => "form-control", :placeholder => "Enter first name" %>
@@ -82,6 +72,64 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <%= f.label :prior_industry, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :prior_industry, :class => "form-control", :placeholder => "Enter prior industry" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :prior_company, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :prior_company, :class => "form-control", :placeholder => "Enter prior company" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :prior_location, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :prior_location, :class => "form-control", :placeholder => "Enter prior location" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :prior_position, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :prior_position, :class => "form-control", :placeholder => "Enter prior position" %>
+            </div>
+          </div>
+
+          <div clss="form-group">
+          <%= f.label "Can we invite you to alumni or careers events?", class: "col-sm-10 control-label" %>
+          <div>
+          <%= radio_button_tag(:ok_to_invite, "1") %>
+          <%= label_tag(:ok_to_invite, "Yes") %>
+          <%= radio_button_tag(:ok_to_invite, "0") %>
+          <%= label_tag(:ok_to_invite, "No") %>
+        </div>
+      </div>
+
+      <div clss="form-group">
+      <%= f.label "Can students contact you?", class: "col-sm-10 control-label" %>
+      <div>
+      <%= radio_button_tag(:ok_to_contact, "1") %>
+      <%= label_tag(:ok_to_contact, "Yes") %>
+      <%= radio_button_tag(:ok_to_contact, "0") %>
+      <%= label_tag(:ok_to_contact, "No") %>
+    </div>
+  </div>
+<p></p>
+
+<div class="form-group">
+  <%= f.label :current_password, class: "col-sm-2 control-label" %>
+  <div class="col-sm-10">
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+    <p class="help-block">
+      We need your current password to confirm your changes.
+    </p>
+  </div>
+</div>
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
               <%= f.submit "Update", class: "btn btn-success btn-block" %>

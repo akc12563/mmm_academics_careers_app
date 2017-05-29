@@ -98,36 +98,3 @@
     </ul>
   </div>
 </div>
-
-<!-- A User has many saved_contacts -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Saved Contacts
-      </li>
-
-      <% @user.saved_contacts.each do |saved_contact| %>
-        <li class="list-group-item">
-          <a href="/saved_contacts/<%= saved_contact.id %>">
-            <%= saved_contact.student_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/saved_contacts/<%= saved_contact.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == saved_contact.user %>
-              <a href="/saved_contacts/<%= saved_contact.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_saved_contact/<%= saved_contact.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>

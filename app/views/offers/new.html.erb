@@ -1,0 +1,80 @@
+<!-- Validation failure messages -->
+<% if @offer.errors.any? %>
+  <% @offer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Offer</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_offer" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+
+      <!-- Label and input for intern_fulltime -->
+            <%= radio_button_tag(:intern_fulltime, "1") %>
+            <%= label_tag(:internship, "Internship") %>
+            <%= radio_button_tag(:intern_fulltime, "0") %>
+            <%= label_tag(:fulltime, "Fulltime") %>
+
+      <!-- Label and input for company -->
+      <div class="form-group">
+        <label for="company" class="control-label">
+          Company
+        </label>
+
+        <input type="text" id="company" name="company" placeholder="Company" class="form-control" value="<%= @offer.company %>">
+      </div>
+
+      <!-- Label and input for position -->
+      <div class="form-group">
+        <label for="position" class="control-label">
+          Position
+        </label>
+
+        <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @offer.position %>">
+      </div>
+
+
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @offer.location %>">
+      </div>
+
+      <!-- Label and input for status -->
+      <div class="form-group">
+        <label for="status" class="control-label">
+          Status
+        </label>
+
+         <%= select_tag(:status, options_for_select([['Accepted', 1], ['Pending', 2],['Declined',3]]), :class=> "form_control") %>
+
+      </div>
+
+      <!-- Label and input for user_id -->
+
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+
+      <button class="btn btn-success">
+        Create Offer
+      </button>
+      or
+      <a href="/offers">Cancel</a>
+    </form>
+  </div>
+</div>
