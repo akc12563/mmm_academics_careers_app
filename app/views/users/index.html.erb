@@ -9,23 +9,52 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Email</th>
-        <th>Password</th>
         <th>First name</th>
         <th>Last name</th>
+        <th>Email</th>
         <th>Grad year</th>
         <th>Industry focus</th>
-        <th>Actions</th>
+        <th>Save Contact</th>
+        <th>View Profile</th>
       </tr>
 
       <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
         <td><%= user.grad_year %></td>
         <td><%= user.industry_focus %></td>
+        <td>
+          <% like = SavedContact.where(:self_id=> current_user.id, :contact_id=> user.id).first %>
+                  <% if like.present?%>
+
+                  <!-- if yes, display a closed heart and allow user to delete like -->
+
+                  <a href= "/delete_saved_contact/<%= like.id %>" class="btn btn-link">
+                    <i class="fa fa-heart"></i></a>
+
+                    <!-- if not, display open heart and allow user to add like -->
+
+                    <%else%>
+                    <form action="/create_saved_contact" method="post">
+                      <!-- Hidden input for authenticity token to protect from forgery -->
+                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                      <!-- Label and input for self_id -->
+                      <input type="hidden" id="self_id" name="self_id" value="<%= current_user.id %>">
+
+                      <!-- Label and input for contact_id -->
+                      <input type="hidden" id="contact_id" name="contact_id" value="<%= user.id %>">
+
+
+                      <button class="btn btn-link">
+                        <i class="fa fa-heart-o"></i>
+                      </button>
+                    </form>
+
+                    <%end%>
+         </td>
         <td>
           <a href="/users/<%= user.id %>" class="btn btn-primary">Profile</a>
         </td>

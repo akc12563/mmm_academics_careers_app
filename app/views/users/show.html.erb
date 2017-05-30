@@ -210,8 +210,16 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <p>
+    </p>
+  </div>
+</div>
+
 <!-- A User has many Contacts -->
 <% if @user.id==current_user.id %>
+<div class = "container">
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
@@ -239,6 +247,7 @@
     </ul>
   </div>
 </div>
+
 <%end%>
 
 
@@ -306,3 +315,4 @@
 </div>
 <%else%>
 <%end%>
+</div>

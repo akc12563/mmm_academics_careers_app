@@ -111,20 +111,18 @@
           <div clss="form-group">
           <%= f.label "Can we invite you to alumni or careers events?", class: "col-sm-10 control-label" %>
           <div>
-          <%= radio_button_tag(:ok_to_invite, "1") %>
-          <%= label_tag(:ok_to_invite, "Yes") %>
-          <%= radio_button_tag(:ok_to_invite, "0") %>
-          <%= label_tag(:ok_to_invite, "No") %>
+            <%= f.check_box(:ok_to_invite) %>
+            <%= label_tag(:ok_to_invite, "Yes") %>
+
         </div>
       </div>
 
       <div clss="form-group">
       <%= f.label "Can students contact you?", class: "col-sm-10 control-label" %>
       <div>
-      <%= radio_button_tag(:ok_to_contact, "1") %>
+      <%= f.check_box(:ok_to_contact) %>
       <%= label_tag(:ok_to_contact, "Yes") %>
-      <%= radio_button_tag(:ok_to_contact, "0") %>
-      <%= label_tag(:ok_to_contact, "No") %>
+
     </div>
   </div>
 <p></p>

@@ -13,9 +13,9 @@ class OffersController < ApplicationController
   end
 
   def index
-    
+
     @q = Offer.ransack(params[:q])
-    @offers = @q.result(:distinct => true).page(params[:page]).per(10)
+    @offers = @q.result.includes(:user).page(params[:page]).per(10)
 
 
     render("offers/index.html.erb")
