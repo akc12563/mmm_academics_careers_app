@@ -37,7 +37,7 @@
       </div>
 
       <!-- Label and input for intern_fulltime -->
-      <%if @offer.intern_fulltime = "1" %>
+      <%if @offer.intern_fulltime == true %>
       <%= radio_button_tag(:intern_fulltime, "1", checked = "1") %>
       <%= label_tag(:internship, "Internship") %>
       <%= radio_button_tag(:intern_fulltime, "0") %>
@@ -64,7 +64,8 @@
           Status
         </label>
 
-         <%= select_tag(:status, options_for_select([['Accepted', 1], ['Pending', 2],['Declined',3]]), :class=> "form_control") %>
+         <%= select_tag(:status, options_for_select([['Accepted', 1], ['Pending', 2],['Declined',3]], @offer.status), :class=> "form_control") %>
+
 
       </div>
 
