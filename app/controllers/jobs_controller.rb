@@ -32,6 +32,7 @@ class JobsController < ApplicationController
     @job.contact_email = params[:contact_email]
     @job.contact_phone = params[:contact_phone]
     @job.deadline = params[:deadline]
+    @job.user_id = params[:user_id]
 
     save_status = @job.save
 
@@ -76,7 +77,7 @@ class JobsController < ApplicationController
 
       case referer
       when "/jobs/#{@job.id}/edit", "/update_job"
-        redirect_to("/jobs/#{@job.id}", :notice => "Job updated successfully.")
+        redirect_to("/jobs", :notice => "Job updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Job updated successfully.")
       end

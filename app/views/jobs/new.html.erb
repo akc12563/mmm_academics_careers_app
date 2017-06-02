@@ -108,6 +108,8 @@
         <input type="text" id="deadline" name="deadline" placeholder="Deadline" class="form-control" value="<%= @job.deadline %>">
       </div>
 
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
       <button class="btn btn-success">
         Create Job
       </button>

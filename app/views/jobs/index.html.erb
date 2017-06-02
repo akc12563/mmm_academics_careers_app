@@ -171,15 +171,18 @@
                     <%end%>
          </td>
 
-        <td>
-          <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
-          <div class="row"> <div class="col-md-12"></div> </div>
+         <td>
+           <a href="/jobs/<%= job.id %>" class="btn btn-primary">
+             <i class="fa fa-search-plus"></i></a>
 
-          <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>
-          <div class="row"> <div class="col-md-12"></div> </div>
-          <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          
-        </td>
+           <% if job.user_id == current_user.id %>
+           <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">
+             <i class="fa fa-edit"></i></a>
+           <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">
+             <i class="fa fa-trash-o"></i></a>
+           <%else%>
+           <%end%>
+         </td>
 
       </tr>
       <% end %>

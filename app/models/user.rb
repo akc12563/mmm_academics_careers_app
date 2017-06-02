@@ -21,6 +21,12 @@ class User < ApplicationRecord
   has_many  :offers,
             :dependent => :destroy
 
+  has_many  :jobs,
+            :dependent => :destroy
+
+  has_many  :events,
+            :dependent => :destroy  
+
   # Indirect associations
   has_many :contacts, :through => :saved_contacts_as_self, :source => :other_user
   has_many :self_users, :through => :saved_contacts_as_other, :source => :self_user

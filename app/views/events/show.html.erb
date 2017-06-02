@@ -1,5 +1,33 @@
 <div class="page-header">
-  <h3>Event #<%= @event.id %></h3>
+  <h3>Event #<%= @event.id %>
+    <% like = SavedEvent.where(:user_id=> current_user.id, :event_id=> @event.id).first %>
+            <% if like.present?%>
+
+            <!-- if yes, display a closed heart and allow user to delete like -->
+
+            <a href= "/delete_saved_event/<%= like.id %>" class="btn btn-link">
+              <i class="fa fa-heart"></i></a>
+
+              <!-- if not, display open heart and allow user to add like -->
+
+              <%else%>
+              <form action="/create_saved_event" method="post">
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                <!-- Label and input for user_id -->
+                <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+                <!-- Label and input for job_id -->
+                <input type="hidden" id="event_id" name="event_id" value="<%= @event.id %>">
+
+
+                <button class="btn btn-link">
+                  <i class="fa fa-heart-o"></i>
+                </button>
+              </form>
+
+              <%end%></h3>
 </div>
 
 <div class="row">
@@ -26,12 +54,15 @@
       <a href="/events" class="btn btn-primary">
         Back
       </a>
+      <% if @event.user_id == current_user.id %>
       <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <%else%>
+      <%end%>
     </div>
   </div>
 </div>

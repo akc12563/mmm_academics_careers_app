@@ -37,12 +37,17 @@
       </div>
 
       <!-- Label and input for intern_fulltime -->
-      <div class="checkbox">
-        <label for="intern_fulltime">
-          <input type="checkbox" id="intern_fulltime" name="intern_fulltime" value="1" <%= "checked" if @offer.intern_fulltime %>>
-          Intern fulltime
-        </label>
-      </div>
+      <%if @offer.intern_fulltime = "1" %>
+      <%= radio_button_tag(:intern_fulltime, "1", checked = "1") %>
+      <%= label_tag(:internship, "Internship") %>
+      <%= radio_button_tag(:intern_fulltime, "0") %>
+      <%= label_tag(:fulltime, "Fulltime") %>
+      <%else%>
+      <%= radio_button_tag(:intern_fulltime, "1") %>
+      <%= label_tag(:internship, "Internship") %>
+      <%= radio_button_tag(:intern_fulltime, "0", checked = "0") %>
+      <%= label_tag(:fulltime, "Fulltime") %>
+      <%end%>
 
       <!-- Label and input for location -->
       <div class="form-group">
@@ -59,23 +64,22 @@
           Status
         </label>
 
-        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @offer.status %>">
+         <%= select_tag(:status, options_for_select([['Accepted', 1], ['Pending', 2],['Declined',3]]), :class=> "form_control") %>
+
       </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @offer.user_id %>">
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @offer.user_id %>">
       </div>
 
       <button class="btn btn-warning">
         Update Offer
       </button>
       or
-      <a href="/offers/<%= @offer.id %>">Cancel</a>
+      <a href="/offers">Cancel</a>
     </form>
   </div>
 </div>

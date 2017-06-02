@@ -82,7 +82,7 @@ class OffersController < ApplicationController
 
       case referer
       when "/offers/#{@offer.id}/edit", "/update_offer"
-        redirect_to("/offers/#{@offer.id}", :notice => "Offer updated successfully.")
+        redirect_to("/offers", :notice => "Offer updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Offer updated successfully.")
       end

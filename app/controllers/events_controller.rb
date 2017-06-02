@@ -27,6 +27,7 @@ class EventsController < ApplicationController
     @event.date_time = params[:date_time]
     @event.location = params[:location]
     @event.audience = params[:audience]
+    @event.user_id = params[:user_id]
 
     save_status = @event.save
 
@@ -66,7 +67,7 @@ class EventsController < ApplicationController
 
       case referer
       when "/events/#{@event.id}/edit", "/update_event"
-        redirect_to("/events/#{@event.id}", :notice => "Event updated successfully.")
+        redirect_to("/events", :notice => "Event updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Event updated successfully.")
       end
