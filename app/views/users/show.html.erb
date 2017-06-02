@@ -52,9 +52,18 @@
           <dt>Industry focus</dt>
           <dd><%= @user.industry_focus %></dd>
           <dt> Ok to email?</dt>
-          <dd><%=@user.ok_to_contact%></dd>
+          <%if @user.ok_to_contact == true%>
+          <dd>Yes!</dd>
+          <%else%>
+          <dd>No :(</dd>
+          <%end%>
+
           <dt> Ok to invite to events?</dt>
-          <dd><%=@user.ok_to_invite%></dd>
+          <%if @user.ok_to_invite == true%>
+          <dd>Yes!</dd>
+          <%else%>
+          <dd>No :(</dd>
+          <%end%>
         </div>
       </dl>
     </div>
